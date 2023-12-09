@@ -16,10 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepo userRepo;
-    /**
-     * @param userDto
-     * @return
-     */
+
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = this.dtoToUser(userDto);
@@ -27,11 +24,7 @@ public class UserServiceImpl implements UserService {
         return this.userToDto(savedUser);
     }
 
-    /**
-     * @param userDto
-     * @param userId
-     * @return
-     */
+
     @Override
     public UserDto update(UserDto userDto, Integer userId) {
         User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User","id", userId));
@@ -44,10 +37,7 @@ public class UserServiceImpl implements UserService {
         return this.userToDto(updatedUser);
     }
 
-    /**
-     * @param userId
-     * @return
-     */
+
     @Override
     public UserDto getUserById(Integer userId) {
         User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User","id", userId));
@@ -55,9 +45,7 @@ public class UserServiceImpl implements UserService {
         return this.userToDto(user);
     }
 
-    /**
-     * @return
-     */
+
     @Override
     public List<UserDto> getAllUsers() {
         List<User> users = this.userRepo.findAll();
@@ -65,9 +53,7 @@ public class UserServiceImpl implements UserService {
         return userDtos;
     }
 
-    /**
-     * @param userId
-     */
+
     @Override
     public void deleteUser(Integer userId) {
         User user = this.userRepo.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User","id", userId));
