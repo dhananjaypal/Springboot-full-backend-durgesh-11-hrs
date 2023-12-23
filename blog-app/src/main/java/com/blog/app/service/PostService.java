@@ -2,6 +2,7 @@ package com.blog.app.service;
 
 import com.blog.app.entity.Post;
 import com.blog.app.payloads.PostDto;
+import com.blog.app.payloads.PostResponse;
 import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface PostService {
 
     void deletePost(Integer postId);
 
-    List<PostDto> getAllPost(Integer pageNumber, Integer pageSize);
+    PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 
     PostDto getPostById(Integer postId);
 
